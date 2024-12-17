@@ -50,13 +50,7 @@ greeting('2100')             | Good evening!          | 14
 
 #region bailam
 
-# def greetingTODO(hour_str): convert to 24h-format -> do greet
-
-def greeting_regex(hour_str):  #NOT WORKING  ref https://g.co/bard/share/b2a94837d088
-  import re
-  m = re.findall(r"^(0[0-9]|1[0-1|2])[:]?([0-5][0-9])?\s*(?:[AaPp][Mm])$", hour_str)
-  return m
-
 def greeting(hour_str):
+  # hint convert to 24h-format -> do greet
   pass#TODO
 #endregion bailam
