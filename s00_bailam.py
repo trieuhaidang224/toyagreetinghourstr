@@ -50,7 +50,55 @@ greeting('2100')             | Good evening!          | 14
 
 #region bailam
 
+from datetime import datetime
+
+
 def greeting(hour_str):
-  # hint convert to 24h-format -> do greet
-  pass#TODO
+    hour_str = hour_str.strip().lower()
+    hour = 0
+    if 'am' in hour_str or 'pm' in hour_str:
+        temp = 'pm' in hour_str
+        hour_str = hour_str.replace('am', '').replace('pm', '').strip()
+        # get value hour
+        hour = get_hour(hour_str, temp)
+
+    else:
+        hour = get_hour(hour_str, '')
+
+    print(hour)
+
+    if 0 <= hour < 12:
+        return "Good morning!"
+
+    elif 12 <= hour < 18:
+        return "Good afternoon!"
+       
+    else:
+        return "Good evening!"
+       
+def get_hour(hour_str, temp):
+    if ':' in hour_str:
+        hour = int(hour_str.split(':')[0])
+    elif '' in hour_str:
+        hour = int(hour_str[:2])
+    else:
+        hour = int(hour_str)
+
+    #  value hour + AM/PM
+    if temp and hour != 12:
+        hour += 12
+
+    elif not temp and hour == 12:
+        hour = 0
+
+    elif hour_str.isdigit() and len(hour_str) > 3:
+        hour = int(hour_str[:2])
+
+    elif ':' in hour_str:
+        hour = int(hour_str.split(':')[0])
+
+    return hour
+
+print(greeting('2100'))
+
 #endregion bailam
